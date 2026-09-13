@@ -1,0 +1,51 @@
+{
+  "project": "Project 4: Audited Systems - A Framework for Blue Team Defense",
+  "checklist_steps": 4,
+  "meta": {
+    "timestamp": "2026-09-13T16:29:21.304090+05:30",
+    "hostname": "DESKTOP-34BM160",
+    "os": "Windows-11-10.0.26200-SP0",
+    "system": "Windows",
+    "python": "3.14.3"
+  },
+  "findings": [
+    {
+      "check": "Step 4 - Network and Endpoint Hygiene",
+      "severity": "Medium",
+      "title": "BitLocker state could not be verified automatically",
+      "evidence": "Get-CimInstance : Access denied \nAt C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\BitLocker\\BitLocker.psm1:144 char:13\n+             Get-CimInstance `\n+             ~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : PermissionDenied: (root\\cimv2\\Secu...cryptableVolume:String) [Get-CimInstance], CimException\n    + FullyQualifiedErrorId : HRESULT 0x80041003,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand\n \nGet-Win32EncryptableVolumeInternal :  does not have an associated BitLocker volume.\nAt C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\BitLocker\\BitLocker.psm1:704 char:42\n+ ...       $AllWin32EncryptableVolume = Get-Win32EncryptableVolumeInternal\n+                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : NotSpecified: (:) [Write-Error], COMException\n    + FullyQualifiedErrorId : System.Runtime.InteropServices.COMException,Get-Win32EncryptableVolumeInternal",
+      "recommendation": "Open BitLocker settings or run Get-BitLockerVolume as administrator.",
+      "cvss": 5.0
+    },
+    {
+      "check": "Step 1 - Identity Front Door",
+      "severity": "Review",
+      "title": "Manual verification required for identity controls",
+      "evidence": "Automated audit did not establish a vulnerability for this control.",
+      "recommendation": "Verify passphrase policy and phishing-resistant MFA, then record evidence.",
+      "cvss": null
+    }
+  ],
+  "evidence": {
+    "identity": {
+      "timestamp": "2026-09-13T16:29:21.304090+05:30",
+      "hostname": "DESKTOP-34BM160",
+      "os": "Windows-11-10.0.26200-SP0",
+      "system": "Windows",
+      "python": "3.14.3"
+    },
+    "firewall": "[{\"Name\":\"Domain\",\"Enabled\":1},{\"Name\":\"Private\",\"Enabled\":1},{\"Name\":\"Public\",\"Enabled\":1}]",
+    "encryption": "Get-CimInstance : Access denied \nAt C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\BitLocker\\BitLocker.psm1:144 char:13\n+             Get-CimInstance `\n+             ~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : PermissionDenied: (root\\cimv2\\Secu...cryptableVolume:String) [Get-CimInstance], CimException\n    + FullyQualifiedErrorId : HRESULT 0x80041003,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand\n \nGet-Win32EncryptableVolumeInternal :  does not have an associated BitLocker volume.\nAt C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\BitLocker\\BitLocker.psm1:704 char:42\n+ ...       $AllWin32EncryptableVolume = Get-Win32EncryptableVolumeInternal\n+                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : NotSpecified: (:) [Write-Error], COMException\n    + FullyQualifiedErrorId : System.Runtime.InteropServices.COMException,Get-Win32EncryptableVolumeInternal",
+    "guest_account": "{\"Name\":\"Guest\",\"Enabled\":false}",
+    "admin_members": "[{\"Name\":\"DESKTOP-34BM160\\\\Administrator\",\"PrincipalSource\":1},{\"Name\":\"DESKTOP-34BM160\\\\boloj\",\"PrincipalSource\":4}]",
+    "admin_members_note": "Review membership manually for least privilege / privilege creep.",
+    "updates": "Windows Update log generation command available; use Settings/Windows Update to confirm pending patches.",
+    "physical_behavioral": "Manual check required: screen-lock timeout, local credential storage, unencrypted files, removable/rogue USB devices, and verification through secondary trusted channels for suspicious requests.",
+    "mfa": "Manual check required: prefer phishing-resistant authenticators (FIDO2/WebAuthn/passkeys) for important accounts."
+  },
+  "limitations": [
+    "This tool is read-only and does not remediate settings.",
+    "Physical/behavioral controls, MFA, browser/AV freshness and organizational context require manual verification.",
+    "CVSS values in this kit are triage examples for local findings, not official CVSS Calculator scores."
+  ]
+}
