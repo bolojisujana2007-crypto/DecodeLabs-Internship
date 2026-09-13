@@ -1,0 +1,31 @@
+id,type,verdict,message,suspicious,red_flags,why
+PA-01,CEO/BEC,MALICIOUS,"From: CEO Name <hacker@gmail.com>
+Subject: Urgent Wire Transfer
+Please process the attached wire transfer before close of business. Keep this strictly confidential and do not discuss it.",hacker@gmail.com; urgent; wire transfer; strictly confidential; do not discuss,Display-name/domain mismatch; executive impersonation; urgency; secrecy; financial request; bypass of normal verification,"The visible executive identity conflicts with the real sender domain, while urgency and secrecy are used to suppress independent verification. A wire-transfer request should be verified through a trusted, separate channel."
+PA-02,Lookalike domain,MALICIOUS,"From: Account Security <security@yourcompany-secure-login.com>
+Subject: Verify your account
+Your account will be disabled today. Sign in now to restore access.",yourcompany-secure-login.com; disabled today; sign in now; restore access,Lookalike/combosquatting domain; urgency; credential-harvesting language; unsolicited login request,The root domain is not the legitimate company domain. The threat of immediate disablement is a cognitive pressure tactic designed to make the recipient click without checking the destination.
+PA-03,Nested subdomain,MALICIOUS,"From: DecodeLabs Support <support@www.decodelabs.tech.login-update.com>
+Subject: Login update required
+Confirm your credentials at the link below to keep your account active.",www.decodelabs.tech.login-update.com; login update; confirm your credentials; keep active,Nested subdomain trap; misleading trusted-name prefix; credential request; urgency/continuity pressure,"Reading the address from right to left reveals login-update.com as the true root domain. The trusted brand appears only as a subdomain, which is a classic deceptive URL construction."
+PA-04,Activity alert,MALICIOUS,"From: Security Alert <no-reply@security-alert.example>
+Subject: Unusual sign-in detected
+We detected a suspicious login. Click the link immediately to secure your account.",unusual sign-in; suspicious login; click immediately; secure your account,Alarmist activity alert; direct login link; urgency; unknown sender/domain; no manual-navigation advice,A fake security alert can redirect users to a phishing login page. The safer approach is to navigate manually to the known service rather than use an unsolicited link.
+PA-05,Sensitive information request,MALICIOUS,"From: IT Security <it-security@example.com>
+Subject: MFA Verification Required
+Reply with your MFA code and confirm your password so we can complete the security check.",MFA Verification Required; MFA code; confirm your password; security check,Unexpected MFA/password request; credential harvesting; impersonation of IT; sensitive information request,Legitimate support processes should not ask users to disclose passwords or one-time MFA codes by email. Providing them can enable account takeover.
+PA-06,Callback phishing / TOAD,MALICIOUS,"From: Subscription Billing <billing@example.net>
+Subject: Subscription renewal issue
+Your payment failed. Call 1-800-555-0199 immediately to cancel the charge.",payment failed; call immediately; cancel the charge; 1-800-555-0199,Callback scam; fake billing problem; urgency; phone number as the main action; no trusted navigation path,The message avoids a clickable malicious link but uses a phone number to move the victim into a social-engineering conversation. The number should not be trusted merely because the email looks official.
+PA-07,Quishing,MALICIOUS,"From: Google Account Team <alert@example.net>
+Subject: Account recovery required
+Scan the QR code within 30 minutes to prevent your account from being locked.",scan the QR code; within 30 minutes; prevent account lock; account recovery,Unsolicited QR code; urgency; account-lock threat; bypasses desktop URL inspection,QR codes can send users to phishing pages on a mobile device where the destination is harder to inspect. The time limit is intended to discourage verification.
+PA-08,Dangerous attachment,MALICIOUS,"From: Project Manager <sarah.lee@company.com>
+Subject: Q3 Project Status
+Please review the attached Q3_Status.html immediately and enable content if prompted.",Q3_Status.html; immediately; enable content,HTML attachment; potentially executable/redirecting content; pressure to open; enable-content instruction,"HTML files can be used to redirect or stage credential theft, and instructions to enable content increase the risk. Unexpected HTML attachments should be isolated and verified."
+PA-09,Fake forwarded chain,SUSPICIOUS,"From: Executive Office <exec-update@example.net>
+Subject: FW: FW: Confidential Payment Approval
+Pasted prior messages contain odd timestamps and headers. Please approve the payment today.",FW: FW:; confidential; approve today; odd timestamps/headers,Fake forwarded chain; inconsistent timestamps; unfamiliar thread; financial request; urgency,Artificial forwarding history can make a fraudulent request appear established. The unusual headers and timestamps warrant independent verification before any payment action.
+PA-10,Safe control sample,SAFE,"From: Project Manager <sarah.lee@company.com>
+Subject: Q3 Project Status Update - Non-Urgent
+Please review the attached project status for Q3 at your earliest convenience. No immediate action is required.",None identified,No strong phishing indicators in the supplied sample; still verify the attachment through normal procedures,"This is a control sample from the project brief: it explicitly states that no immediate action is required and does not request credentials, payment, secrecy, or bypassing procedure. Normal attachment-safety checks still apply."

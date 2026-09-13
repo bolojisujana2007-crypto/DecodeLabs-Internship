@@ -1,0 +1,12 @@
+PROJECT 3 — REQUIREMENTS VERIFICATION
+
+[PASS] Suspicious links or keywords identified
+[PASS] Red flags listed for phishing messages
+[PASS] Unsafe explanation provided
+[PASS] Threat-analysis skill demonstrated
+[PASS] Cyber-attack awareness demonstrated
+[PASS] Security-thinking/triage actions included
+[PASS] Clear Safe/Suspicious/Malicious outcomes included
+[PASS] Pause-Verify-Report workflow included
+
+Source alignment: The deliverables follow the provided Project 3 brief, especially its goal, key requirements, key skills, triage toolkit, and Safe/Suspicious/Malicious outcomes.
