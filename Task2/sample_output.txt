@@ -1,0 +1,15 @@
+DecodeLabs - Project 2
+Basic Encryption & Decryption
+
+INPUT
+Text: HELLO WORLD!
+Shift Key: 3
+
+PROCESS
+ASCII conversion -> Shift -> Printable ASCII wrap-around
+
+OUTPUT
+Original Text  : HELLO WORLD!
+Encrypted Text : KHOOR#ZRUOG$
+Decrypted Text : HELLO WORLD!
+Status         : SUCCESS - Decryption matched the input.
